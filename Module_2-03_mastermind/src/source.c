@@ -6,6 +6,7 @@
 // longer solution by Pasi
 
 /* 03-mastermind
+ * Implementation with O(kn) time complexity (constant k)
  */
 void mastermind(const int *solution, const int *guess, char *result, unsigned int len)
 {

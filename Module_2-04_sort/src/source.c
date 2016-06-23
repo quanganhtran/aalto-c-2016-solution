@@ -1,7 +1,7 @@
 #include "source.h"
 
 
-/* Selection sort */
+/* Insertion sort */
 /* Parameters:
  * start: start of an array
  * size: length of an array

@@ -44,6 +44,5 @@ void str_to_strarray(char* string, char** arr)
         arr[i + 1] = NULL;
     } else {
         arr[0] = NULL;
-    }
-    
+    }    
 }

@@ -28,7 +28,7 @@ int *dyn_reader(unsigned int n)
  */
 int *add_to_array(int *arr, unsigned int num, int newval)
 {
-    arr = realloc(arr, num + sizeof(int));
+    arr = realloc(arr, sizeof(int) * (num + 1));
     arr[num] = newval;
     return arr;
 }

@@ -7,6 +7,13 @@ struct cargo {
 };
 
 // Define the vessel structure here
+struct vessel {
+    char name[31];
+    double length;
+    double depth;
+    struct cargo crg;
+};
+
 struct vessel create_vessel(const char *name, double length, double depth,
 			    struct cargo crg);
 

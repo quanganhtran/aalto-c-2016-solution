@@ -12,6 +12,7 @@
 int *dyn_reader(unsigned int n)
 {
     int* arr = malloc(sizeof(int) * n);
+    if (!arr) return NULL;
     for (unsigned int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
@@ -28,7 +29,8 @@ int *dyn_reader(unsigned int n)
  */
 int *add_to_array(int *arr, unsigned int num, int newval)
 {
-    arr = realloc(arr, sizeof(int) * (num + 1));
-    arr[num] = newval;
-    return arr;
+    int* newarr = realloc(arr, sizeof(int) * (num + 1));
+    if (!newarr) return NULL;
+    newarr[num] = newval;
+    return newarr;
 }

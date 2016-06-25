@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "fraction.h"
 
 /* Algorithm for determining greatest common divisor, needed in (d) */
@@ -35,6 +36,10 @@ unsigned int gcd(unsigned int u, unsigned int v)
     return gcd((v - u) >> 1, u);
 }
 
+struct fraction_st {
+    unsigned int num;
+    unsigned int denom;
+};
 
 /* Exercise a: Set fraction
  * Parameters: numerator and denominator
@@ -42,27 +47,26 @@ unsigned int gcd(unsigned int u, unsigned int v)
  */
 Fraction* setFraction(unsigned int numerator, unsigned int denominator)
 {
-    (void) numerator;
-    (void) denominator;
-    return NULL;  // replace this
+    Fraction* frac = malloc(sizeof(struct fraction_st));
+    frac->num = numerator;
+    frac->denom = denominator;
+    return frac;
 }
 
 unsigned int getNum(const Fraction *f)
 {
-    (void) f;
-    return 0;
+    return f->num;
 }
 
 unsigned int getDenom(const Fraction *f)
 {
-    (void) f;
-    return 0;
+    return f->denom;
     
 }
 
 void freeFraction(Fraction *f)
 {
-    (void) f;
+    free(f);
 }
 
 
@@ -75,9 +79,8 @@ void freeFraction(Fraction *f)
  */
 int compFraction(const Fraction *a, const Fraction *b)
 {
-    (void) a;
-    (void) b;
-    return 0;
+    int comp = a->num * b->denom - b->num * a->denom;
+    return (0 < comp) - (comp < 0);
 }
 
 /* Exercise c: Add values
@@ -86,9 +89,8 @@ int compFraction(const Fraction *a, const Fraction *b)
  */
 Fraction* addFraction(const Fraction *a, const Fraction *b)
 {
-    (void) a;
-    (void) b;
-    return NULL;  // replace this
+    Fraction *sum = setFraction(a->num * b->denom + b->num * a->denom, a->denom * b->denom);
+    return sum;
 }
 
 
@@ -96,11 +98,13 @@ Fraction* addFraction(const Fraction *a, const Fraction *b)
  * Parameters: Fraction to be reduced. Reduction happens on the object itself */
 void reduceFraction(Fraction* val)
 {
-    (void) val;
+    unsigned int frac_gcd = gcd(val->num, val->denom);
+    val->num /= frac_gcd;
+    val->denom /= frac_gcd;
 }
 
 /* Not needed, but it will be useful to implement this */
 void printFraction(const Fraction *val)
 {
-    (void) val;
+    printf("%u/%u", val->num, val->denom);
 }

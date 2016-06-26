@@ -22,12 +22,14 @@ int init_record(struct oodi *or, const char *p_student, const char *p_course,
 {
     if (strlen(p_student) > 6) return 0;
     strncpy(or->student, p_student, 6);
-    or->student[7] = '\0';
+    or->student[6] = '\0';
+    
     size_t course_len = strlen(p_course);
     or->course = malloc(course_len + 1);
     if (!or->course) return 0;
     strncpy(or->course, p_course, course_len);
     or->course[course_len] = '\0';
+    
     or->grade = p_grade;
     or->compdate = p_date;
     return 1;
@@ -68,6 +70,7 @@ int change_grade(struct oodi *array, unsigned int size, const char *p_student,
 {
     int changed = 0;
     for (unsigned int i = 0; i < size; i++) {
+        // Replace strcmp if possible
         if (strncmp(array[i].student, p_student, 6) == 0 && strcmp(array[i].course, p_course) == 0) {
             array[i].grade = newgrade;
             array[i].compdate = newdate;

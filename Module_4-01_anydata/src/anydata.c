@@ -7,25 +7,25 @@
  */
 AnyData setDouble(double value)
 {
-    (void) value; // replace these lines with your code
     AnyData ad;
-    ad.type = UNDEF;
+    ad.type = DOUBLE;
+    ad.value.dval = value;
     return ad;
 }
 
 AnyData setInt(int value)
 {
-    (void) value; // replace these lines with your code
     AnyData ad;
-    ad.type = UNDEF;
+    ad.type = INT;
+    ad.value.ival = value;
     return ad;
 }
 
 AnyData setByte(char value)
 {
-    (void) value; // replace these lines with your code
     AnyData ad;
-    ad.type = UNDEF;
+    ad.type = BYTE;
+    ad.value.bval = value;
     return ad;
 }
 
@@ -50,5 +50,17 @@ void printByte(char val)
  */
 void printValue(AnyData val)
 {
-   (void) val; // replace these lines with your code
+    switch(val.type) {
+        case BYTE:
+            printByte(val.value.bval);
+            break;
+        case INT:
+            printInt(val.value.ival);
+            break;
+        case DOUBLE:
+            printDouble(val.value.dval);
+            break;
+        default:
+            (void)0;
+    }
 }

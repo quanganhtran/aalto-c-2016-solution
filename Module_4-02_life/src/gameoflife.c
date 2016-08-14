@@ -5,9 +5,9 @@
 
 
 State** initCells(unsigned int xsize, unsigned int ysize) {
-    State** cells = calloc(ysize, sizeof(*(cells)));
+    State** cells = calloc(ysize, sizeof(*cells));
     for (unsigned int i = 0; i < ysize; i++) {
-        cells[i] = calloc(xsize, sizeof(**(cells)));
+        cells[i] = calloc(xsize, sizeof(**cells));
     }
     return cells;
 }

@@ -54,7 +54,7 @@ int word_count(const char *filename)
     int word = 0, in_word = 0;
     int status = fgetc(f);
     while (status >= 0) {
-        if ((65 <= status && status <= 90) || (97 <= status && status <= 122)) {
+        if (('A' <= status && status <= 'Z') || ('a' <= status && status <= 'z')) {
             // Recognize a word when an alphabetic character is detected
             in_word = 1;
         } else if (status == ' ' || status == '\n') {

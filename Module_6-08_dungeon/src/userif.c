@@ -154,7 +154,7 @@ int isBlocked(Game *game, int x, int y)
 {
     if (x < 0 || (unsigned) x >= game->opts.mapWidth || y < 0 || (unsigned) y >= game->opts.mapHeight)
         return 1;
-    if (game->map.tile[y][x] != TILE_OPEN)
+    if (game->map.tile[y][x] == TILE_WALL)
         return 1;
     if (game->monsters) {
         Creature* ms = game->monsters;
